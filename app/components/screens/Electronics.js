@@ -1,13 +1,18 @@
 import React from 'react'
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, ScrollView} from 'react-native';
 import {Header} from 'react-native-elements'
-import ShoppingCartIcon from '../ShoppingCartIcon';
+import { Text, Button } from '@rneui/themed';
 import { Ionicons } from '@expo/vector-icons';
-import Products from '../Products';
+import ShoppingCartIcon from '../ShoppingCartIcon';
 import { electronics } from './../../Data/fakeData';
+import { useDispatch} from 'react-redux';
+import { addToCart } from '../../features/cartSlice';
 
 
 const Electronics = ({navigation}) => {
+
+    const dispatch = useDispatch();    
+    
     return ( 
         <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
             <Header
@@ -24,10 +29,21 @@ const Electronics = ({navigation}) => {
                 }}
             />
             <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
-                <Products products={electronics} onPress={addItemToCart} />
+                <ScrollView>
+                    {electronics.map((p,i) => (
+                        <TouchableOpacity key= {i}>      
+                            <Button
+                                onPress={() => dispatch(addToCart(p))}
+                                buttonStyle={{backgroundColor: "transparent", borderBottomWidth: 1, borderBottomColor: "lightgray"}}
+                                containerStyle={{width: 300, marginHorizontal: 50, marginVertical: 10}}
+                            >  
+                                <Text style={{fontWeight: "bold", color: "black", fontSize: 18}}> {`${p.name} - ${p.price} Euro`} </Text>
+                            </Button>
+                        </TouchableOpacity>))
+                    }
+                </ScrollView>
             </View>
         </View>
-        
      );
 };
  

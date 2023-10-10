@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
 import { View } from 'react-native';
-import {Header, Button, Icon} from 'react-native-elements'
+import {Header} from 'react-native-elements'
+import {Icon, FAB} from '@rneui/themed';
 import ShoppingCartIcon from '../ShoppingCartIcon';
-import { MaterialIcons } from '@expo/vector-icons';
-import { FAB } from '@rneui/themed';
+import CostumButton from '../CostumButton';
+
 
 const Home = ({navigation}) => {
 
@@ -19,46 +20,34 @@ const Home = ({navigation}) => {
                 }}
             />
             <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
-                <Button
-                    title="Electronics"
-                    titleStyle={{fontWeight: "bold", color: "#fff", fontSize: 20}}
-                    onPress={() => navigation.navigate('Electronics')}
-                    icon={{name: "electrical-services", type: "material-icon", size: 35, color: 'white'}}
-                    iconRight
-                    iconContainerStyle={{ marginLeft: 10 }}
-                    buttonStyle={{backgroundColor: "red", borderRadius: 30, padding: 15}}
-                    containerStyle={{width: 300, marginHorizontal: 50, marginVertical: 10}}
-                />
-                <Button
-                    title="Book"
-                    titleStyle={{fontWeight: "bold", color: "#fff", fontSize: 20}}
-                    onPress={() => navigation.navigate('Books')}
-                    icon={{name: "book", type: "entypo", size: 35, color: 'white'}}
-                    iconRight
-                    iconContainerStyle={{ marginLeft: 10 }}
-                    buttonStyle={{backgroundColor: "green", borderRadius: 30, padding: 15}}
-                    containerStyle={{width: 300, marginHorizontal: 50, marginVertical: 10}}
-                />
-                <Button
-                    title="Stationary"
-                    titleStyle={{fontWeight: "bold", color: "#fff", fontSize: 20}}
-                    onPress={() => navigation.navigate('Stationary')}
-                    icon={{name: "pen-tool", type: "feather", size: 35, color: 'white'}}
-                    iconRight
-                    iconContainerStyle={{ marginLeft: 10 }}
-                    buttonStyle={{backgroundColor: "orange", borderRadius: 30, padding: 15}}
-                    containerStyle={{width: 300, marginHorizontal: 50, marginVertical: 10}}
-                />
-                <Button
-                    title="Tablet"
-                    titleStyle={{fontWeight: "bold", color: "#fff", fontSize: 20}}
-                    onPress={() => navigation.navigate('Tablet')}
-                    icon={{name: "tablet", type: "entypo", size: 35, color: 'white'}}
-                    iconRight
-                    iconContainerStyle={{ marginLeft: 10 }}
-                    buttonStyle={{backgroundColor: "skyblue", borderRadius: 30, padding: 15}}
-                    containerStyle={{width: 300, marginHorizontal: 50, marginVertical: 10}}
-                />
+                    <CostumButton 
+                        title="Electronics" 
+                        screen="Electronics" 
+                        name="electrical-services" 
+                        type="material-icon" 
+                        backgroundColor="red"
+                    />
+                    <CostumButton 
+                        title="Books" 
+                        screen="Books" 
+                        name="book" 
+                        type="entypo" 
+                        backgroundColor="green"
+                    />
+                    <CostumButton 
+                        title="Stationary" 
+                        screen="Stationary" 
+                        name="pen-tool" 
+                        type="feather" 
+                        backgroundColor="orange"
+                    />
+                    <CostumButton 
+                        title="Tablet" 
+                        screen="Tablet" 
+                        name="tablet" 
+                        type="entypo" 
+                        backgroundColor="skyblue"
+                    />
             </View>
             <View>
                 <FAB
